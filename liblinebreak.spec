@@ -5,7 +5,7 @@
 Name: 		liblinebreak
 Summary: 	Line breaking in a Unicode sequence
 Version:	20080321
-Release: 	%mkrel 1
+Release: 	%mkrel 2
 License: 	GPL
 Group:		System/Libraries
 URL: 		http://vimgadgets.cvs.sourceforge.net/vimgadgets/common/tools/linebreak/
