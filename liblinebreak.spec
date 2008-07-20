@@ -1,7 +1,7 @@
 %define develname %mklibname -d linebreak
 
 Name: 		liblinebreak
-Summary: 	Line breaking in a Unicode sequence.
+Summary: 	Line breaking in a Unicode sequence
 Version:	20080321
 Release: 	%mkrel 1
 License: 	GPL
