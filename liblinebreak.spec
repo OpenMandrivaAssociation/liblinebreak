@@ -5,7 +5,7 @@ Summary: 	Line breaking in a Unicode sequence.
 Version:	20080321
 Release: 	%mkrel 1
 License: 	GPL
-Group: 		Productivity/Publishing/Other
+Group:		Development/C
 URL: 		http://vimgadgets.cvs.sourceforge.net/vimgadgets/common/tools/linebreak/
 Source0: 	%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}
