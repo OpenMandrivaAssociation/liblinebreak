@@ -64,3 +64,22 @@ rm -rf %{buildroot}
 %{_libdir}/liblinebreak.a
 %{_includedir}/linebreak.h
 
+
+
+%changelog
+* Fri Dec 10 2010 Oden Eriksson <oeriksson@mandriva.com> 20080321-4mdv2011.0
++ Revision: 620148
+- the mass rebuild of 2010.0 packages
+
+* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 20080321-3mdv2010.0
++ Revision: 429795
+- rebuild
+
+* Sun Jul 20 2008 Guillaume Rousse <guillomovitch@mandriva.org> 20080321-2mdv2009.0
++ Revision: 239236
+- build as a shared library too, and fix compile flags
+- import liblinebreak
+
+
+* Sun Jul 20 2008 Guillaume Rousse <guillomovitch@mandriva.org> 20080321-1mdv2009.0
+- first mdv release, using package from Antony Dovgal <tony@daylessday.org> 
