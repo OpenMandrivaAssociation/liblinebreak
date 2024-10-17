@@ -8,7 +8,7 @@ Version:	20080321
 Release: 	5
 License: 	GPL
 Group:		System/Libraries
-URL: 		http://vimgadgets.cvs.sourceforge.net/vimgadgets/common/tools/linebreak/
+URL: 		https://vimgadgets.cvs.sourceforge.net/vimgadgets/common/tools/linebreak/
 Source0: 	%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
