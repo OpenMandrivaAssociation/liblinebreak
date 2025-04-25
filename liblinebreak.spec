@@ -1,16 +1,18 @@
-%define major %version
-%define libname	  %mklibname linebreak %{major}
+%define major %(echo %{version} |cut -d. -f1)
+%define libname	  %mklibname linebreak
 %define develname %mklibname -d linebreak
+%define staticname %mklibname -d -s linebreak
 
 Name: 		liblinebreak
 Summary: 	Line breaking in a Unicode sequence
-Version:	20080321
-Release: 	5
+Version:	2.1
+Release: 	1
 License: 	GPL
 Group:		System/Libraries
 URL: 		https://vimgadgets.cvs.sourceforge.net/vimgadgets/common/tools/linebreak/
-Source0: 	%{name}-%{version}.tar.gz
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+Source0: 	https://cyfuture.dl.sourceforge.net/project/vimgadgets/liblinebreak/%{version}/liblinebreak-%{version}.tar.gz
+BuildSystem:	autotools
+BuildOption:	--enable-static
 
 %description
 Line breaking in a Unicode sequence. 
@@ -27,59 +29,29 @@ Designed to be used in a generic text renderer.
 %package -n %{develname}
 Summary:	Headers for developing programs that will use %{name}
 Group:		Development/C
-Provides:   linebreak-devel
+Provides:	linebreak-devel
 Requires:	%{libname} = %{version}-%{release}
 
 %description -n %{develname}
 Line breaking in a Unicode sequence. 
 Designed to be used in a generic text renderer.
 
-%prep
-%setup -q
+%package -n %{staticname}
+Summary:	Static library for developing programs that will use %{name}
+Group:		Development/C
+Requires:	%{develname} = %{version}-%{release}
 
-%build
-%make  CC=%__cc CFLAGS="%{optflags} -fPIC" CFG=release
-%__cc \
-    -shared -Wl,-soname,liblinebreak.so.%{major} \
-    -o liblinebreak.so.%{version} \
-    ReleaseDir/*.o
-
-%install
-rm -rf %{buildroot}
-install -d -m 755 %{buildroot}%{_libdir}
-install -d -m 755 %{buildroot}%{_includedir}
-install -m 755 liblinebreak.so.%{version} %{buildroot}%{_libdir}
-install -m 644 ReleaseDir/liblinebreak.a %{buildroot}%{_libdir}
-install -m 644 linebreak.h %{buildroot}%{_includedir}
-
-%clean
-rm -rf %{buildroot}
+%description -n %{staticname}
+Line breaking in a Unicode sequence. 
+Designed to be used in a generic text renderer.
 
 %files -n %{libname}
-%defattr(-,root,root)
-%{_libdir}/liblinebreak.so.%{major}
+%{_libdir}/liblinebreak.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
-%{_libdir}/liblinebreak.a
 %{_includedir}/linebreak.h
+%{_includedir}/linebreakdef.h
+%{_libdir}/liblinebreak.so
 
-
-
-%changelog
-* Fri Dec 10 2010 Oden Eriksson <oeriksson@mandriva.com> 20080321-4mdv2011.0
-+ Revision: 620148
-- the mass rebuild of 2010.0 packages
-
-* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 20080321-3mdv2010.0
-+ Revision: 429795
-- rebuild
-
-* Sun Jul 20 2008 Guillaume Rousse <guillomovitch@mandriva.org> 20080321-2mdv2009.0
-+ Revision: 239236
-- build as a shared library too, and fix compile flags
-- import liblinebreak
-
-
-* Sun Jul 20 2008 Guillaume Rousse <guillomovitch@mandriva.org> 20080321-1mdv2009.0
-- first mdv release, using package from Antony Dovgal <tony@daylessday.org> 
+%files -n %{staticname}
+%{_libdir}/liblinebreak.a
